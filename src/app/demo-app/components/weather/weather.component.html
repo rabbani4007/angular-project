@@ -1,0 +1,90 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="space-around start"
+  fxFlex="50%"
+  fxFlex.xs="100%"
+  fxLayoutGap="20 grid"
+>
+  <div fxLayout="row">
+    <mat-card>
+      <mat-toolbar fxLayoutAlign="center center" color="primary">
+        Weather Page
+      </mat-toolbar>
+      <form fxLayout="column">
+        <mat-form-field>
+          <mat-label>Enter City name</mat-label>
+          <input
+            matInput
+            placeholder="Enter Location"
+            name="location"
+            [(ngModel)]="city"
+            required
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="getWeatherByCity(city)"
+        >
+          Get Weather
+        </button>
+      </form>
+    </mat-card>
+  </div>
+  <div fxLayout="row">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>s weather</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>Test </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="weatherData" fxLayout="row" fxLayoutAlign="start start" fxFill>
+  <div fxFlex.xs="100%" fxLayoutGap="10 grid">
+    <mat-toolbar fxLayoutAlign="center center" color="primary"
+      >Weather Data</mat-toolbar
+    >
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
+        <mat-card-subtitle>Today: July 10, 2020</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item
+            >TEMP : {{ weatherData.main.temp }}K
+            {{ (weatherData.main.temp * 1.8 - 459.67).toFixed(2)
+            }}<sup>&#8457;</sup> {{ (weatherData.main.temp - 273.15).toFixed(2)
+            }}<sup>&#8451;</sup>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item
+            >Sunrise :
+            {{ getLocalCustmDateTime(weatherData.sys.sunrise) }} ,Sunset :
+            {{ getLocalCustmDateTime(weatherData.sys.sunset) }}</mat-list-item
+          >
+          <mat-divider></mat-divider>
+          <mat-list-item
+            >HUMIDITY : {{ weatherData.main.humidity }}, PRESSURE:
+            {{ weatherData.main.pressure }}</mat-list-item
+          >
+          <mat-list-item
+            >WIND : {{ weatherData.wind.speed }} m/s, PRESSURE:
+            {{ weatherData.main.pressure }}</mat-list-item
+          >
+
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,147 @@
+<div fxFlex="80%" fxLayout="column" fxLayoutAlign="space-around center" fxFill>
+  <div>
+    <!-- <mat-card>
+      <mat-toolbar color="primary">Weather Page</mat-toolbar>
+      <form
+        fxLayoutAlign="stretch"
+        fxLayout="column"
+        (submit)="$event.preventDefault()"
+      >
+        <mat-form-field>
+          <mat-label>Enter City name</mat-label>
+          <input
+            matInput
+            placeholder="Enter Location"
+            name="location"
+            [(ngModel)]="city"
+            required
+          />
+        </mat-form-field>
+        <button (click)="getWeatherByCity(city)" mat-raised-button>
+          Search
+        </button>
+      </form>
+    </mat-card> -->
+  </div>
+  <!--  
+    <div>
+   <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image1"></div>
+        <mat-card-title>weather</mat-card-title>
+        <mat-card-subtitle>Today: July 10, 2020</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <P>SAMPLE TEST</P>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card> 
+  </div>-->
+</div>
+
+<!-- <form (submit)="$event.preventDefault()">
+  <mat-form-field>
+    <mat-label>Enter City name</mat-label>
+    <input
+      matInput
+      placeholder="Jamadoba"
+      [(ngModel)]="city"
+      [ngModelOptions]="{ standalone: true }"
+      required
+    />
+  </mat-form-field>
+  <button (click)="getWeatherByCity(city)" mat-raised-button>Search</button>
+</form> -->
+<!-- <ng-template
+    fxFlex="50"
+    fxLayoutAlign="stretch"
+    fxLayout="column"
+    [ngIf]="weatherData"
+    [ngIfElse]="loading"
+  >
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
+        <mat-card-subtitle>Today: July 10, 2020</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item
+            >TEMP : {{ weatherData.main.temp }}K
+            {{ (weatherData.main.temp * 1.8 - 459.67).toFixed(2)
+            }}<sup>&#8457;</sup> {{ (weatherData.main.temp - 273.15).toFixed(2)
+            }}<sup>&#8451;</sup>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item
+            >Sunrise :
+            {{ getLocalCustmDateTime(weatherData.sys.sunrise) }} ,Sunset :
+            {{ getLocalCustmDateTime(weatherData.sys.sunset) }}</mat-list-item
+          >
+          <mat-divider></mat-divider>
+          <mat-list-item
+            >HUMIDITY : {{ weatherData.main.humidity }}, PRESSURE:
+            {{ weatherData.main.pressure }}</mat-list-item
+          >
+          <mat-list-item
+            >WIND : {{ weatherData.wind.speed }} m/s, PRESSURE:
+            {{ weatherData.main.pressure }}</mat-list-item
+          >
+
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+       
+      </mat-card-actions>
+    </mat-card>
+  </ng-template> -->
+
+<!-- <ng-template [ngIf]="weatherData" [ngIfElse]="loading">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ weatherData.name }}'s weather</mat-card-title>
+      <mat-card-subtitle>Today: July 10, 2020</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item
+          >TEMP : {{ weatherData.main.temp }}K
+          {{ (weatherData.main.temp * 1.8 - 459.67).toFixed(2)
+          }}<sup>&#8457;</sup> {{ (weatherData.main.temp - 273.15).toFixed(2)
+          }}<sup>&#8451;</sup>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+          >Sunrise :
+          {{ getLocalCustmDateTime(weatherData.sys.sunrise) }} ,Sunset :
+          {{ getLocalCustmDateTime(weatherData.sys.sunset) }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item
+          >HUMIDITY : {{ weatherData.main.humidity }}, PRESSURE:
+          {{ weatherData.main.pressure }}</mat-list-item
+        >
+        <mat-list-item
+          >WIND : {{ weatherData.wind.speed }} m/s, PRESSURE:
+          {{ weatherData.main.pressure }}</mat-list-item
+        >
+
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+    <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button> 
+    </mat-card-actions>
+  </mat-card>
+</ng-template> -->
+<!-- 
+<ng-template #loading>
+<mat-spinner title="Loading" ngIf>Loading</mat-spinner> 
+</ng-template>
+-->

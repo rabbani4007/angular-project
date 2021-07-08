@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" class="example-toolbar">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name">Admin Menus</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+  <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+    <mat-nav-list>
+      <div class="profile-card">
+        <div class="header">
+          <h2>{{ user.firstName }}</h2>
+          <h4>{{ user.email }}</h4>
+        </div>
+        <img
+          src="https://www.olympus-imaging.co.in/content/000101305.jpg"
+          alt="{{ user.email }}"
+          title="{{ user.email }}"
+        />
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <button mat-button routerLink="/admin">Home</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/dashboard">Dashboard</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/user">User</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/rights">Rights</button>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="example-sidenav-content">
+    <section>
+      <article>
+        <router-outlet></router-outlet>
+      </article>
+    </section>
+  </div>
+</mat-sidenav-container>

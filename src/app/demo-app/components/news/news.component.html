@@ -1,0 +1,127 @@
+<div *ngIf="!deviceXs">
+  <mat-toolbar fxLayout="row wrap">
+    <span
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      style="padding-right: 10px"
+      *ngFor="let category of categories"
+    >
+      <button
+        title="{{ category }}"
+        style="text-transform: capitalize"
+        (click)="getNewsArticleByCategory(category)"
+        mat-raised-button
+        color="primary"
+      >
+        {{ category }}
+      </button>
+    </span>
+  </mat-toolbar>
+
+  <mat-toolbar>
+    <span style="padding-right: 10px">
+      <mat-form-field>
+        <mat-label>Select News Source</mat-label>
+        <mat-select
+          [(value)]="selectedNewsSource"
+          (selectionChange)="onNewsSourceChange()"
+        >
+          <mat-option
+            *ngFor="let newsSource of newsSources"
+            [value]="newsSource.id"
+          >
+            {{ newsSource.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </span>
+
+    <span style="padding-right: 10px">
+      <button
+        title="Top Headline India"
+        (click)="getNewsTopHeadlinesByCountry('in')"
+        mat-raised-button
+        color="primary"
+      >
+        Top Headline India
+      </button>
+    </span>
+    <span style="padding-right: 10px">
+      <button
+        title="Top Headline US"
+        (click)="getNewsTopHeadlinesByCountry('us')"
+        mat-raised-button
+        color="primary"
+      >
+        Top Headline US
+      </button>
+    </span>
+
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      [showFirstLastButtons]="true"
+      (page)="OnPageChange($event)"
+    >
+    </mat-paginator>
+  </mat-toolbar>
+</div>
+<div *ngIf="deviceXs">
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon>more_vert</mat-icon>Category Menu
+  </button>
+  <mat-menu #menu="matMenu">
+    <span *ngFor="let category of categories">
+      <button
+        mat-menu-item
+        title="{{ category }}"
+        style="text-transform: capitalize"
+        (click)="getNewsArticleByCategory(category)"
+        color="primary"
+      >
+        {{ category }}
+      </button>
+    </span>
+  </mat-menu>
+</div>
+<mat-spinner title="Loading" *ngIf="pagedList.length === 0"
+  >Loading</mat-spinner
+>
+
+<!-- <mat-grid-list cols = "3" rowHeight = "130px">
+    <mat-grid-tile *ngFor="let newsArticle of pagedList"
+    [colspan] = "1"
+    [rowspan] = "3"> <app-news-card [article]=newsArticle></app-news-card>
+    </mat-grid-tile>
+    
+ </mat-grid-list> -->
+
+<!-- <div
+  fxLayout="row"
+  fxLayout.xs="column"
+  fxLayoutWrap
+  fxLayoutGap="0.5%"
+  fxLayoutAlign="center"
+>
+  <div *ngFor="let newsArticle of pagedList">
+    <app-news-card [article]="newsArticle"></app-news-card>
+  </div>
+</div> -->
+
+<div class="content">
+  <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div
+      fxFlex="25%"
+      fxFlex.xs="100%"
+      fxFlex.sm="33%"
+      *ngFor="let newsArticle of pagedList"
+    >
+      <app-news-card [article]="newsArticle"></app-news-card>
+    </div>
+  </div>
+</div>

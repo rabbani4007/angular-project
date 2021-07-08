@@ -1,0 +1,101 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayoutAlign="space-between center">
+    <div fxLayout="row">
+      <button mat-button routerLink="/">
+        <mat-icon>home</mat-icon>
+        <span class="logo">Arhaan Technology</span>
+      </button>
+      <span *ngIf="!deviceXs">
+        <button mat-button routerLink="/">Home</button>
+        <button mat-button routerLink="/demo-app/news">News</button>
+        <button mat-button [matMenuTriggerFor]="menuApp">Demo App</button>
+        <mat-menu #menuApp="matMenu">
+          <button mat-menu-item routerLink="/demo-app/news">News</button>
+          <button mat-menu-item routerLink="/demo-app/weather">Weather</button>
+          <button mat-menu-item routerLink="/about">About</button>
+          <button mat-menu-item routerLink="/contact">Contact</button>
+        </mat-menu>
+        <button mat-button routerLink="/admin">Admin</button>
+        <button
+          mat-button
+          routerLink="/login"
+          *ngIf="!securityObject.isAuthenticated"
+        >
+          Login
+        </button>
+        <button
+          mat-button
+          (click)="logout()"
+          *ngIf="securityObject.isAuthenticated"
+        >
+          Logout {{ securityObject.userName }}
+        </button>
+      </span>
+    </div>
+    <div>
+      <button mat-icon-button>
+        <button
+          *ngIf="deviceXs"
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <!-- <mat-icon *ngIf="deviceXs">more_vert</mat-icon> -->
+        <span *ngIf="!deviceXs">More</span>
+        <button
+          *ngIf="!deviceXs"
+          mat-icon-button
+          [matMenuTriggerFor]="themeSelector"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </button>
+    </div>
+  </mat-toolbar-row>
+  <mat-toolbar-row *ngIf="deviceXs" fxLayoutAlign="start center">
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/demo-app/news">News</button>
+    <button mat-button routerLink="/demo-app/weather">Weather</button>
+    <button mat-button routerLink="/about">About</button>
+    <button
+      mat-button
+      routerLink="/login"
+      *ngIf="!securityObject.isAuthenticated"
+    >
+      Login
+    </button>
+    <button
+      mat-button
+      (click)="logout()"
+      *ngIf="securityObject.isAuthenticated"
+    >
+      Logout {{ securityObject.userName }}
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button> -->
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>
+
+<mat-menu #themeSelector="matMenu">
+  <app-theme-changer></app-theme-changer>
+</mat-menu>

@@ -1,0 +1,15 @@
+<!-- <mat-toolbar color="primary">  
+  <h1>  
+    Arhaan Rabbani
+  </h1>  
+  <button mat-button routerLink="/">Home</button>  
+  <button mat-button routerLink="/news" *ngIf="securityObject.canAccessNews">News</button>
+  <button mat-button routerLink="/weather">Weather</button>
+  <button mat-button routerLink="/about">About</button>
+  <button mat-button routerLink="/login" *ngIf="!securityObject.isAuthenticated">Login</button>
+  <button mat-button (click)="logout()" *ngIf="securityObject.isAuthenticated">Logout {{securityObject.userName}}</button>
+     
+</mat-toolbar> -->
+<app-header></app-header>
+<router-outlet></router-outlet>
+<app-footer></app-footer>
